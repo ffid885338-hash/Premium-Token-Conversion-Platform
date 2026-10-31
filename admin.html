@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乙H OFFICIAL — Admin Command Center</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .grid-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span>乙H</span> ADMIN PANEL</div>
+    <div><a href="index.html" style="color: #fff; text-decoration: none;">➔ Back to App</a></div>
+  </header>
+
+  <div class="main-container">
+    <!-- Auth Barrier -->
+    <div id="adminAuthSection" class="glass-panel" style="padding: 2rem; max-width: 450px; margin: 3rem auto;">
+      <h2 style="margin-bottom: 1rem; font-size: 1.3rem;">Administrator Key</h2>
+      <input type="password" id="adminSecret" placeholder="Enter Bearer Token / Admin Key" style="margin-bottom: 1rem;">
+      <button class="btn-red" id="btnLoginAdmin">Authorize Session</button>
+    </div>
+
+    <!-- Protected View -->
+    <div id="adminDashboard" style="display: none;">
+      <div class="grid-stats">
+        <div class="glass-panel stat-card">
+          <label>Total Conversions</label>
+          <div class="stat-number" id="statTotalConv">0</div>
+        </div>
+        <div class="glass-panel stat-card">
+          <label>Today's Conversions</label>
+          <div class="stat-number" id="statTodayConv">0</div>
+        </div>
+        <div class="glass-panel stat-card">
+          <label>Failed Transactions</label>
+          <div class="stat-number" id="statFailures" style="color: #ff4455;">0</div>
+        </div>
+        <div class="glass-panel stat-card">
+          <label>Active Users</label>
+          <div class="stat-number" id="statUsers">0</div>
+        </div>
+      </div>
+
+      <div class="glass-panel" style="padding: 2rem;">
+        <h3 style="margin-bottom: 1rem;">System Control</h3>
+        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+          <input type="checkbox" id="maintToggle" style="width: 20px; height: 20px;">
+          Enable Maintenance Mode
+        </label>
+        <button class="btn-red" id="btnSaveConfig" style="max-width: 200px; margin-top: 1.5rem;">Save Parameters</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

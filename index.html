@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乙H OFFICIAL — Premium Token Conversion Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>乙H</span> OFFICIAL
+    </div>
+    <div class="header-actions">
+      <a href="admin.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600;">ADMIN PORTAL</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="glass-panel converter-card">
+      <h1 class="section-title">Token Transformation Engine</h1>
+      <p class="section-subtitle">Convert EAT, Access & JWT authentication credentials securely</p>
+
+      <form id="conversionForm">
+        <div class="form-group">
+          <label for="conversionType">Conversion Mode</label>
+          <select id="conversionType" required>
+            <option value="EAT_TO_ACCESS">EAT Token ➔ Access Token</option>
+            <option value="EAT_TO_JWT">EAT Token ➔ JWT Token</option>
+            <option value="ACCESS_TO_JWT">Access Token ➔ JWT Token</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rawToken">Input Token or Auth URL</label>
+          <textarea id="rawToken" rows="3" placeholder="Paste full token or callback URL (e.g., https://...?eat=...)" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="telegramUser">Telegram Handle (For Status Alerts)</label>
+          <input type="text" id="telegramUser" placeholder="@username">
+        </div>
+
+        <div class="form-group">
+          <label>Human Verification Challenge</label>
+          <div class="captcha-container">
+            <div id="captchaQuestion" class="captcha-badge">Calculating...</div>
+            <input type="number" id="captchaAnswer" placeholder="Enter answer" required style="max-width: 180px;">
+          </div>
+        </div>
+
+        <button type="submit" id="btnSubmit" class="btn-red">CONVERT CREDENTIAL</button>
+      </form>
+
+      <div id="resultBox" class="result-box">
+        <div style="font-weight: 600; color: #fff; margin-bottom: 0.5rem;">Resulting Token:</div>
+        <div id="tokenOutput" class="token-output"></div>
+        <button id="btnCopy" class="btn-copy">📋 Copy Token to Clipboard</button>
+      </div>
+    </div>
+
+    <!-- Live Telemetry / Recent Activity -->
+    <div class="history-section">
+      <h2 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Live Global Activity</h2>
+      <div class="glass-panel table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Mode</th>
+              <th>Token Digest</th>
+              <th>Status</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="activityTableBody">
+            <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Loading logs...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

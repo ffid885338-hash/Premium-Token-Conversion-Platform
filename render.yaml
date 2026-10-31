@@ -1,14 +1,22 @@
 services:
   - type: web
     name: zh-official-backend
-    env: python
+    runtime: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET
         generateValue: true
+      - key: ADMIN_SECRET_KEY
+        generateValue: true
       - key: CORS_ORIGINS
         value: "*"
+      - key: EXTERNAL_TOKEN_GATEWAY_URL
+        sync: false
+      - key: EXTERNAL_API_KEY
+        sync: false
